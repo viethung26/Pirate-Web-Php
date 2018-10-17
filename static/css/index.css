@@ -1,0 +1,75 @@
+html{box-sizing: border-box;} *,*:before,*:after{box-sizing: inherit;}
+body{margin: 0px; font-family: 'Roboto', sans-serif;background: url('pirates/bg.jpg') cyan;overflow: auto}
+a{color:inherit;}
+footer{width: 100%; text-align: center; background-color: rgba(147,159,181,0.7); overflow: hidden}
+footer:hover{color: yellow; font-style: italic;}
+.hi-content{max-width: 1024px;margin: auto; overflow: hidden}
+.hi-container{padding: 0 8px} .hi-container:after, .hi-container:before{display: table; content:""; clear: both;}
+.hi-section{margin: 16px 0px;}
+
+.hi-right{float: right;}
+
+.relative{position:relative;}
+.left{position: relative; width:24%; float:left; height: 500px; margin-right: 20px}
+.right{position: relative; width:74%;float: left; height: 500px;}
+.hi-button{text-decoration: none;background-color: #aaa; color: #fff;padding: 8px 24px;text-align:center; vertical-align: middle; border: none;} .hi-button:hover{background-color: #000; cursor: pointer;}
+.hi-input{display: block; width: 100%; padding: 8px;margin-bottom: 10px; margin: auto;}
+.hi-nav{position: absolute; top:10px; left: 50%; transform: translateX(-50%);} .hi-nav td{padding: 0px 10px}
+.hi-nav-item{float:left;margin-top: 30px;}
+.test{background-color: black}
+.hi-navbg{background-color: rgba(255, 153, 51,0.6);}
+.hi-0margin-top{margin-top: 0px}
+.hi-object-fit{object-fit: cover}
+.hi-card{box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4), 0 6px 20px 0 rgba(0,0,0,0.3);}
+.hi-tag{padding: 4px 8px}
+.hi-modal{z-index: 3; position: fixed; top:0px; left: 0px; width: 100%; height: 100%;background-color:  rgba(0,0,0,0.4); display: none}
+.hi-modal-content{position: relative; top: 10px; width: 600px; margin: auto; background-color: #fff; padding: 0px}
+.hi-hide{display: none}
+#rank{background-color: rgb(253,156,77); color: white; font-weight: bold; text-align: center}
+#rank-list{background-color: rgba(147,159,181,0.7); font-style:italic; border-collapse: collapse; width: 100%; height:400px;}
+#rank-list td,th {border-bottom: 1px solid #ddd; text-align: center }
+#rank-list tr:hover td{background-color: rgba(253,156,77,0.5); cursor: pointer;}
+#rank-list th{background-color: rgba(253,237,219,0.8)}
+#news{background-color: rgba(147,159,181,0.7); padding: 5px 0px}
+#news h2{text-indent: 5px; border-bottom: 1px solid #ddd; color: white;}
+#news-content{height: 400px;overflow: auto}
+#islogin{color: white;}
+article{padding: 5px 20px; margin: 10px 20px; background-color: white}
+article header{border-bottom: 1px solid #ddd}
+
+@media (max-width:700px){
+	.hi-hide-small{display: none!important}
+	.left{width: 100%}
+	.right{width: 100%}}
+.hi-top-right{position: absolute; top:0px;right:10px;}
+#sign{position: absolute; top: 10px; right: 10px;}
+#modal01{}
+
+.hi-margin-bottom{margin-bottom: 10px}
+.hi-fullwidth{width: 100%}
+.hi-padding{padding:8px 16px!important}
+.hi-padding-16{padding-top: 16px; padding-bottom: 16px}
+
+.hi-white{background-color: white; color: black;}
+.hi-green{background-color: green; color: #fff;}
+.hi-red{background-color: red; color: white;}
+.hi-grey{background-color: #aaa; color: #000;}
+.hi-light-grey{color:#000!important;background-color:#f1f1f1!important}
+.hi-orange{background-color: #eb8a44; color: white;}
+.hi-colortest{background-color: #5c8212}
+.hi-colortest:hover{background-color: #3f6c45}
+.hi-hover-pink:hover{background-color: #f9c8c1}
+.hi-hover-orange:hover{background-color: #a85d26}
+.hi-hover-grey:hover {background-color: #aaa; color: #000;}
+.hi-border-bottom{border-bottom: 1px solid #ddd}
+.hi-border-top{border-top: 1px solid #ddd}
+.hi-blue-pine{background-color: #1d2529; color: white;}
+
+.hi-simple-border{border-width: 1px; border-style: solid}
+
+.hi-roundform{position: relative; top: 180px; margin: auto; width: 400px; height: 280px; background-color: #324851; border-radius: 25px; border: 1px solid #888}
+.hi-form{position: relative; top: -50px; width: 70%; margin: auto;  }
+.hi-avatar{border: 3px solid white; border-radius: 50%; width:150px; height: 150px; position: relative;  top: -75px; left: 50%; transform: translateX(-50%);background-color:white; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.19), 0 6px 20px 0 rgba(0,0,0,0.2)}
+.hi-btn{border: 1px solid #aaa; padding: 8px; color: white; background-image: linear-gradient(#86AC41,#546b29); border-radius: 25px; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.19), 0 6px 20px 0 rgba(0,0,0,0.2) ; outline: none;}
+.hi-btn:hover{background: red; cursor: pointer;}
+.hi-btn:active{background: darkblue}

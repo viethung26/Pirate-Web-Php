@@ -1,0 +1,149 @@
+<div class="hi-modal" id="modal01">
+    <div class="hi-roundform hi-modal-content">
+        <img class="hi-avatar" src="user.jpg">
+        <form class="hi-form" onsubmit="return checkLogin()" action="login.php" method="POST">
+            <div class="hi-section hi-container">
+                <input class="hi-input hi-margin-bottom hi-blue-pine" type="text" placeholder="Enter username" name="username" required id="userlogin">
+                <input class="hi-input hi-margin-bottom hi-blue-pine" type="password" placeholder="Enter password" name="passwd" required id="passwdlogin">
+                <input class="hi-btn hi-fullwidth" type="submit" value="Login" name="submit">
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Register -->
+<div class="hi-modal" id="modal02">
+    <div class="hi-roundform hi-modal-content hi-container hi-white" style="height: 330px;">
+        <img class="hi-avatar" src="user.jpg">
+        <form class="hi-form" action="register.php" onsubmit="return validateForm()" method="POST">
+            <div class="hi-section hi-container relative">
+                <span id="userexist" class="hi-tag hi-red hi-hide" style="position: absolute; top: 4px; right: 12px;"><i class="fa fa-times-rectangle"></i> User already exists</span>
+                <span id="userinvalid" class="hi-tag hi-red hi-hide" style="position: absolute; top: 4px; right: 12px;"><i class="fa fa-times-rectangle"></i> Invalid</span>
+                <span id="uservalid" class="hi-tag hi-green hi-hide" style="position: absolute; top: 4px; right: 12px;"><i class="fa fa-check-square"></i> valid</span>
+                <input class="hi-input hi-margin-bottom hi-blue-pine" type="text" placeholder="Enter username" name="username" autocomplete="off" onkeyup="checkExist(this.value)" required>
+                <span id="pass1invalid" class="hi-tag hi-red hi-hide" style="position: absolute; top: 50px; right: 12px;"><i class="fa fa-times-rectangle"></i> Invalid</span>
+                <span id="pass1valid" class="hi-tag hi-green hi-hide" style="position: absolute; top: 50px; right: 12px;"><i class="fa fa-check-square"></i> valid</span>
+                <input class="hi-input hi-margin-bottom hi-blue-pine" type="password" placeholder="Enter password" id="passwd1" name="passwd" autocomplete="off" onkeyup="checkPassword1()" required>
+                <span id="pass2invalid" class="hi-tag hi-red hi-hide" style="position: absolute; top: 96px; right: 12px;"><i class="fa fa-times-rectangle"></i> Invalid</span>
+                <span id="pass2valid" class="hi-tag hi-green hi-hide" style="position: absolute; top: 96px; right: 12px;"><i class="fa fa-check-square"></i> valid</span>
+                <input class="hi-input hi-margin-bottom hi-blue-pine" type="password" placeholder="Confirm password" id="passwd2" onkeyup="checkPassword2();" name="passwd" autocomplete="off" required>
+                <input class="hi-btn hi-fullwidth" type="submit" value="Sign Up" name="submit">
+            </div>
+        </form>
+    </div>
+</div>
+<div id="sign">
+    <button class="hi-button hi-orange hi-hover-orange" onclick="document.getElementById('modal01').style.display='block'">Sign In</button>
+    <button class="hi-button hi-orange hi-hover-orange" onclick="document.getElementById('modal02').style.display='block'">Sign Up</button>
+</div>
+<script>
+    var modal = document.getElementById('modal01');
+    var modal2 = document.getElementById('modal02');
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        } else if (event.target == modal02)
+            modal02.style.display = 'none';
+    }
+    //Check Password
+    var checkPasswd1 = false;
+
+    function checkPassword1() {
+        var passwd1 = document.getElementById('passwd1').value;
+        if (passwd1.length < 6 || passwd1.match(/\W/)) {
+            checkPasswd1 = false;
+            document.getElementById('pass1invalid').style.display = "block";
+            document.getElementById('pass1valid').style.display = "none";
+        } else {
+            checkPasswd1 = true;
+            document.getElementById('pass1invalid').style.display = "none";
+            document.getElementById('pass1valid').style.display = "block";
+        }
+        checkPassword2();
+    }
+    var checkPasswd2 = false;
+
+    function checkPassword2() {
+        var passwd1 = document.getElementById('passwd1').value;
+        var passwd2 = document.getElementById('passwd2').value;
+        if (passwd2.length == 0) {
+            checkPasswd2 = false;
+            document.getElementById('pass2invalid').style.display = "none";
+            document.getElementById('pass2valid').style.display = "none";
+        } else if (passwd1 != passwd2) {
+            checkPasswd2 = false;
+            document.getElementById('pass2invalid').style.display = "block";
+            document.getElementById('pass2valid').style.display = "none";
+        } else {
+            checkPasswd2 = true;
+            document.getElementById('pass2invalid').style.display = "none";
+            document.getElementById('pass2valid').style.display = "block";
+        }
+    }
+    // Check User
+    var checkUser = false;
+
+    function checkExist(str) {
+        if (str.length < 4 || str.match(/\W/)) {
+            checkUser = false;
+            changeUserNotify('userinvalid');
+        } else {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    if (xmlhttp.responseText == "yes") {
+                        checkUser = false;
+                        changeUserNotify('userexist');
+                    } else {
+                        checkUser = true;
+                        changeUserNotify('uservalid');
+                    }
+                }
+            };
+            xmlhttp.open("GET", "checkregister.php?q=" + str, true);
+            xmlhttp.send();
+        }
+    }
+    var userNotify = ['userinvalid', 'uservalid', 'userexist'];
+
+    function changeUserNotify(value) {
+        var i;
+        for (i in userNotify) {
+            if (value != userNotify[i]) document.getElementById(userNotify[i]).style.display = 'none';
+            else document.getElementById(userNotify[i]).style.display = 'block';
+        }
+
+    }
+
+    function validateForm() {
+        if (checkUser && checkPasswd1 && checkPasswd2) return true;
+        else {
+            alert("Not Right!\nCheck your information!");
+        }
+        return false;
+    }
+    function checkLogin() {
+        var flag = false;
+        var user = document.getElementById("userlogin").value;
+        var passwd = document.getElementById("passwdlogin").value;
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if(this.readyState == 4 && this.status ==200) {
+                if(xmlhttp.responseText == "false") {
+                alert("ssss");
+                flag = false;
+                }
+                else {
+                    flag = true;
+                }
+            }
+            
+        };
+        xmlhttp.open("GET", "login2.php?u="+user+"&p="+passwd, true);
+        xmlhttp.send();
+        alert(flag);
+        return flag;
+        
+    }
+
+</script>

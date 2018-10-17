@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Test Login form</title>
+		<link href="https://fonts.googleapis.com/css?family=Chela+One" rel="stylesheet">
+		<style>
+			html{box-sizing: border-box;} *{box-sizing: inherit;}
+			body{background-color: #333399}
+			.relative{position: relative;}
+			#roundform{position: relative; top: 180px; margin: auto; width: 400px; height: 280px; background-color: #4a52a7; border-radius: 25px; border: 1px solid #888}
+			#form{position: relative; top: -50px; width: 70%; margin: auto;  }
+			#avatar{border: 3px solid white; border-radius: 50%; width:150px; height: 150px; position: relative;  top: -75px; left: 50%; transform: translateX(-50%);background-color:white; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.19), 0 6px 20px 0 rgba(0,0,0,0.2)}
+			input{width: 100%; padding: 10px; margin-bottom: 10px; background-color: #54589c; color: white; font-family: 'Chela One', cursive; border: 1px solid white }
+			#login{border: 1px solid #aaa; color: white; background-image: linear-gradient(#0f156a,#252095); border-radius: 25px; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.19), 0 6px 20px 0 rgba(0,0,0,0.2) ; outline: none;}
+			#login:hover{background: red; cursor: pointer;}
+			#login:active{background: green}
+		</style>
+	</head>
+	<body>
+		<div class="relative">
+			<div id="roundform">
+				<img src="user.jpg" >
+				<form id="form">
+					<input type="text">
+					<input type="password">
+					<input type="submit" id="login" value="LOGIN"</form>
+				</form>
+			</div>
+		</div>
+	</body>
+</html>
